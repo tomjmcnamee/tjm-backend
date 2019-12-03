@@ -1,4 +1,4 @@
-class Api::V1::UserAccountController < ApplicationController
+class Api::V1::ShutTheBoxGameController < ApplicationController
     def create
         userObj = UserAccount.new(user_account_params)
         if userObj.save
