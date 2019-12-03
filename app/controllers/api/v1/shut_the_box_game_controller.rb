@@ -1,25 +1,13 @@
 class Api::V1::ShutTheBoxGameController < ApplicationController
-    def create
-        userObj = UserAccount.new(user_account_params)
-        if userObj.save
-            token = JWT.encode({userObj: userObj.id}, ENV["JWTTokenKey"])
-            loggedInUserSupportedCampaignObjsArr = Campaign.where(id: CampaignContribution.where(account_id: userObj.id).select(:campaign_id))
-            campaignContributionsOjbsArr = CampaignContribution.where(account_id: userObj.id)
-            favoritedCampaigns = FavoritedCampaign.where(user_account_id: userObj.id)
-            render json: {userObj: userObj, token: token, loggedInUserSupportedCampaignObjsArr: loggedInUserSupportedCampaignObjsArr, campaignContributionsOjbsArr: campaignContributionsOjbsArr, favoritedCampaigns: favoritedCampaigns}
-        else
-            render json: {errors: userObj.errors.full_messages}
-        end
-    end
-
-    def login
-            userObj = UserAccount.find_by(email_address: params["auth"]["email_address"])
-            if userObj && userObj.authenticate(params["auth"]["password"])
-            token = JWT.encode({userObj: userObj.id}, ENV["JWTTokenKey"])
-            loggedInUserSupportedCampaignObjsArr = Campaign.where(id: CampaignContribution.where(account_id: userObj.id).select(:campaign_id))
-            campaignContributionsOjbsArr = CampaignContribution.where(account_id: userObj.id)
-            favoritedCampaigns = FavoritedCampaign.where(user_account_id: userObj.id)
-            render json: {userObj: userObj, token: token, loggedInUserSupportedCampaignObjsArr: loggedInUserSupportedCampaignObjsArr, campaignContributionsOjbsArr: campaignContributionsOjbsArr, favoritedCampaigns: favoritedCampaigns}
+    def recordGame
+        newGame = ShutTheBoxGame.new(shut_the_box_game_params)
+        if newGame.save
+            ShutTheBoxDiceRoll.create(shut_the_box_game_id: newGame.id, shut_the_box_dice_roll_params)
+            ShutTheBoxRollSum.create(shut_the_box_game_id: newGame.id, shut_the_box_roll_sum_params)
+            render json: {userObj: userObj, 
+                    token: token, 
+                    userRollSums: userRollSums, 
+                    userDiceRolls: userDiceRolls}
         else
             render json: {errors: userObj.errors.full_messages}
         end 
@@ -27,8 +15,16 @@ class Api::V1::ShutTheBoxGameController < ApplicationController
 
 private
 
-def user_account_params
-    params.require(:user_account).permit(:first_name, :last_name, :street, :city, :state, :zip, :country, :cell_phone, :email_address, :password)
-end
+    def shut_the_box_game_params
+        params.require(:shut_the_box_game).permit(:user_id, :win)
+    end
+
+    def shut_the_box_dice_roll_params
+        params.require(:shut_the_box_dice_roll).permit(:shut_the_box_game_id, :user_id, :two,  :three,  :four,  :five,  :six,  :seven,  :eight,  :nine,  :ten,  :eleven,  :twelve)
+    end
+
+    def shut_the_box_roll_sum_params
+        params.require(:shut_the_box_roll_sum).permit(:shut_the_box_game_id, :user_id, :one, :two,  :three,  :four,  :five,  :six)
+    end
     
 end

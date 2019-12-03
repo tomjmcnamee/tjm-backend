@@ -1,6 +1,5 @@
 class Api::V1::ShutTheBoxRollHistoryController < ApplicationController
     def allRollsForUser
-        user = User.find(params[:id])
         rollSumArr = ShutTheBoxRollSum.where(user_id: params[:id])
         diceRollArr = ShutTheBoxDiceRoll.where(user_id: params[:id])
         userRollSums = {two: rollSumArr.sum(:two), three: rollSumArr.sum(:three), four: rollSumArr.sum(:four), five: rollSumArr.sum(:five), six: rollSumArr.sum(:six), seven: rollSumArr.sum(:seven), eight: rollSumArr.sum(:eight), nine: rollSumArr.sum(:nine), ten: rollSumArr.sum(:ten), eleven: rollSumArr.sum(:eleven), twelve: rollSumArr.sum(:twelve)}
@@ -13,11 +12,5 @@ class Api::V1::ShutTheBoxRollHistoryController < ApplicationController
         allDiceRolls = {one: ShutTheBoxDiceRoll.sum(:one), two: ShutTheBoxDiceRoll.sum(:two), three: ShutTheBoxDiceRoll.sum(:three), four: ShutTheBoxDiceRoll.sum(:four), five: ShutTheBoxDiceRoll.sum(:five), six: ShutTheBoxDiceRoll.sum(:six)}
         render json: { allRollSums: allRollSums, allDiceRolls: allDiceRolls }
     end
-
-private
-
-def user_account_params
-    params.require(:user_account).permit(:first_name, :last_name, :street, :city, :state, :zip, :country, :cell_phone, :email_address, :password)
-end
     
 end
