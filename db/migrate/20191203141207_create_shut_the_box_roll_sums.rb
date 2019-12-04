@@ -14,6 +14,7 @@ class CreateShutTheBoxRollSums < ActiveRecord::Migration[6.0]
       t.integer :ten, default: 0
       t.integer :eleven, default: 0
       t.integer :twelve, default: 0
+      t.integer :totalRolls, default: 0
 
       t.timestamps
     end

@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_141207) do
     t.integer "ten", default: 0
     t.integer "eleven", default: 0
     t.integer "twelve", default: 0
+    t.integer "totalRolls", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["shut_the_box_game_id"], name: "index_shut_the_box_roll_sums_on_shut_the_box_game_id"

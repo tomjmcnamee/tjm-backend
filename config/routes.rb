@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get "/stb-rollhistory/:id", to: "shut_the_box_roll_history#allRollsForUser"
       get "/stb-rollhistory", to: "shut_the_box_roll_history#allRollsForEveryone"
+      get '/autologin', to: "auth#create"
+      post '/login', to:"auth#login"
+      post '/user', to:"user#create"
 
 
       get "/campaigns/TopXCampaignsByCountOfUniqueContributors/:X", to: "campaign#getTopXCampaignsByCountOfUniqueContributors"
@@ -16,9 +19,6 @@ Rails.application.routes.draw do
       post "/campaigns", to: "campaign#create"
       post "/entities", to: "entity#create"
       # patch "/players/:name/win", to: "players#win"
-      get '/autologin', to: "auth#create"
-      post '/login', to:"auth#login"
-      post '/user_accounts', to:"user_account#create"
       get '/myCampaignContributions/:id', to: "campaign_contribution#loggedInUserCampaignContributionObjsArr"
       get '/selectedCampaignContributions/:id', to: "campaign_contribution#selectedCampaignContributions"
       post '/contributeToCampaign', to: "campaign_contribution#create"
