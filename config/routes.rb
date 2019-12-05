@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/autologin', to: "auth#create"
       post '/login', to:"auth#login"
       post '/user', to:"user#create"
+      post '/stb-commitgame', to:"shut_the_box_game#savegame"
 
 
       get "/campaigns/TopXCampaignsByCountOfUniqueContributors/:X", to: "campaign#getTopXCampaignsByCountOfUniqueContributors"

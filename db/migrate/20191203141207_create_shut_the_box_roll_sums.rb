@@ -1,7 +1,6 @@
 class CreateShutTheBoxRollSums < ActiveRecord::Migration[6.0]
   def change
     create_table :shut_the_box_roll_sums do |t|
-      t.references :shut_the_box_game, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.integer :two, default: 0
       t.integer :three, default: 0

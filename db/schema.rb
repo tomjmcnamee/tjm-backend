@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_141207) do
   enable_extension "plpgsql"
 
   create_table "shut_the_box_dice_rolls", force: :cascade do |t|
-    t.bigint "shut_the_box_game_id", null: false
     t.bigint "user_id", null: false
     t.integer "one", default: 0
     t.integer "two", default: 0
@@ -26,20 +25,20 @@ ActiveRecord::Schema.define(version: 2019_12_03_141207) do
     t.integer "six", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["shut_the_box_game_id"], name: "index_shut_the_box_dice_rolls_on_shut_the_box_game_id"
     t.index ["user_id"], name: "index_shut_the_box_dice_rolls_on_user_id"
   end
 
   create_table "shut_the_box_games", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.boolean "win", default: false
+    t.integer "wins", default: 0
+    t.integer "losses", default: 0
+    t.integer "totalGames", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_shut_the_box_games_on_user_id"
   end
 
   create_table "shut_the_box_roll_sums", force: :cascade do |t|
-    t.bigint "shut_the_box_game_id", null: false
     t.bigint "user_id", null: false
     t.integer "two", default: 0
     t.integer "three", default: 0
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_141207) do
     t.integer "totalRolls", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["shut_the_box_game_id"], name: "index_shut_the_box_roll_sums_on_shut_the_box_game_id"
     t.index ["user_id"], name: "index_shut_the_box_roll_sums_on_user_id"
   end
 
@@ -68,9 +66,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_141207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "shut_the_box_dice_rolls", "shut_the_box_games"
   add_foreign_key "shut_the_box_dice_rolls", "users"
   add_foreign_key "shut_the_box_games", "users"
-  add_foreign_key "shut_the_box_roll_sums", "shut_the_box_games"
   add_foreign_key "shut_the_box_roll_sums", "users"
 end
