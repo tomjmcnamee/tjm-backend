@@ -14,16 +14,16 @@ User.create!(first_name: "Tom", last_name: "McNamee", email: "tom@tomjmcnamee.co
 puts "Create USERS - End"
 
 puts "Create GAME - start"
-ShutTheBoxGame.create!(user_id: 1, wins: 0, losses: 3, totalGames: 3)
-ShutTheBoxGame.create!(user_id: 2, wins: 0, losses: 3, totalGames: 3)
+ShutTheBoxGame.create!(user_id: 1, wins: 0, losses: 0, totalGames: 0)
+ShutTheBoxGame.create!(user_id: 2, wins: 0, losses: 0, totalGames: 0)
 puts "Create GAME - end"
 
 puts "Create DICE ROLL - start"
-ShutTheBoxDiceRoll.create!(user_id: 1, one: 20, two: 20, three: 20, four: 20, five: 20, six: 20)
-ShutTheBoxDiceRoll.create!(user_id: 2, one: 20, two: 20, three: 20, four: 20, five: 20, six: 20)
+ShutTheBoxDiceRoll.create!(user_id: 1, one: 0, two: 0, three: 0, four: 0, five: 0, six: 0)
+ShutTheBoxDiceRoll.create!(user_id: 2, one: 0, two: 0, three: 0, four: 0, five: 0, six: 0)
 puts "Create DICE ROLL - end"
 
 puts "Create ROLL SUM - start"
-ShutTheBoxRollSum.create!(user_id: 1, two: 10, three: 10, four: 10, five: 10, six: 10, seven: 10, eight: 10, nine: 10, ten: 10, eleven: 10, twelve: 10, totalRolls: 120)
-ShutTheBoxRollSum.create!(user_id: 2, two: 10, three: 10, four: 10, five: 10, six: 10, seven: 10, eight: 10, nine: 10, ten: 10, eleven: 10, twelve: 10, totalRolls: 120)
+ShutTheBoxRollSum.create!(user_id: 1, two: 0, three: 0, four: 0, five: 0, six: 0, seven: 0, eight: 0, nine: 0, ten: 0, eleven: 0, twelve: 0, totalRolls: 0)
+ShutTheBoxRollSum.create!(user_id: 2, two: 0, three: 0, four: 0, five: 0, six: 0, seven: 0, eight: 0, nine: 0, ten: 0, eleven: 0, twelve: 0, totalRolls: 0)
 puts "Create ROLL SUM - end"

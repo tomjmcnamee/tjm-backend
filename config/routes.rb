@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get "/stb-rollhistory/:id", to: "shut_the_box_roll_history#allRollsForUser"
-      get "/stb-rollhistory", to: "shut_the_box_roll_history#allRollsForEveryone"
+      get "/stb-guestrollhistory", to: "shut_the_box_roll_history#allRollsForGuest"
+      # get "/stb-rollhistory", to: "shut_the_box_roll_history#allRollsForEveryone"
       get '/autologin', to: "auth#create"
       post '/login', to:"auth#login"
       post '/user', to:"user#create"
