@@ -10,7 +10,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     # origins 'example.com'
     origins 
             'http://apps.tomjmcnamee.com',
-            'http://www.apps.tomjmcnamee.com',
+            'http://www.apps.tomjmcnamee.com'
             # 'https://apps.tomjmcnamee.com',
             # 'https://www.apps.tomjmcnamee.com',
             # 'http://tjm-apps.herokuapp.com',
