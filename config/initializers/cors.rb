@@ -8,11 +8,11 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # origins 'example.com'
-    origins 'apps.tomjmcnamee.com',
-            'www.apps.tomjmcnamee.com',
-            'tjm-apps.herokuapp.com',
-            'herokuapp.com',
-            'tomjmcnamee.com',
+    origins 'http://apps.tomjmcnamee.com',
+            'http://www.apps.tomjmcnamee.com',
+            'http://tjm-apps.herokuapp.com',
+            'http://www.tjm-apps.herokuapp.com',
+
             # 'localhost:3000'
 
     resource '*',
