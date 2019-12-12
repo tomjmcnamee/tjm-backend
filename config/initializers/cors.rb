@@ -11,7 +11,11 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins 'http://apps.tomjmcnamee.com',
             'http://www.apps.tomjmcnamee.com',
             'http://tjm-apps.herokuapp.com',
-            'http://www.tjm-apps.herokuapp.com'
+            'https://apps.tomjmcnamee.com',
+            'https://www.apps.tomjmcnamee.com',
+            'https://tjm-apps.herokuapp.com',
+            'http://www.tjm-apps.herokuapp.com',
+            'https://www.tjm-apps.herokuapp.com'
 
             # 'localhost:3000'
 
