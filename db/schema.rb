@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_141207) do
+ActiveRecord::Schema.define(version: 2020_01_21_031050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2019_12_03_141207) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_shut_the_box_roll_sums_on_user_id"
+  end
+
+  create_table "simulators", force: :cascade do |t|
+    t.string "inner_or_outer"
+    t.string "single_tile_above_number"
+    t.integer "games"
+    t.integer "wins"
+    t.integer "losses"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

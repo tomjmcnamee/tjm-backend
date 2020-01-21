@@ -1,0 +1,6 @@
+class Simulator < ApplicationRecord
+
+  
+
+
+end
