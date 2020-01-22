@@ -3,10 +3,9 @@ class Simulator < ApplicationRecord
 
 
   def self.runSimulator(countOfGames, higherThanThisNumber, innerOrOuter)
-    # higherThanThisNumber = 7
-    @countOfDieRolls = 0
-    dieResults = {1=> 0, 2=> 0, 3=> 0, 4=> 0, 5=> 0, 6=> 0}
-    rollResults = {2=> 0, 3=> 0, 4=> 0, 5=> 0, 6=> 0, 7=> 0, 8=> 0, 9=> 0, 10=> 0, 11=> 0, 12=> 0}
+    # @countOfDieRolls = 0
+    # dieResults = {1=> 0, 2=> 0, 3=> 0, 4=> 0, 5=> 0, 6=> 0}
+    # rollResults = {2=> 0, 3=> 0, 4=> 0, 5=> 0, 6=> 0, 7=> 0, 8=> 0, 9=> 0, 10=> 0, 11=> 0, 12=> 0}
     gameResults = {:wins=> 0, :losses=> 0}
 
 
@@ -28,21 +27,21 @@ class Simulator < ApplicationRecord
       result
     end
 
-    def self.roll(dieResults, rollResults)
+    def self.roll()
     # def roll()
       dice = [1,2,3,4,5,6]
       die1 = dice.sample
       die2 = dice.sample
-      dieResults[die1] += 1
-      dieResults[die2] += 1
+      # dieResults[die1] += 1
+      # dieResults[die2] += 1
       result = die1 + die2
-      rollResults[result] += 1
-      @countOfDieRolls += 1
+      # rollResults[result] += 1
+      # @countOfDieRolls += 1
       return result
     end
 
 
-    def self.newGame(gameResults, higherThanThisNumber, dieResults, rollResults, innerOrOuter)
+    def self.newGame(gameResults, higherThanThisNumber, innerOrOuter)
 
       # puts "new game--------------"
       board = [1,2,3,4,5,6,7,8,9,10,11,12]
@@ -52,7 +51,7 @@ class Simulator < ApplicationRecord
       while gameover < 1 do
         # puts board
         if board.length > 0 
-          result = roll(dieResults, rollResults)
+          result = roll()
           # puts "result of roll = #{result}"
           if result > higherThanThisNumber
             # puts "result is bigger than X"
@@ -155,15 +154,15 @@ class Simulator < ApplicationRecord
 
 
     countOfGames.times do 
-      newGame(gameResults, higherThanThisNumber, dieResults, rollResults, innerOrOuter)
+      newGame(gameResults, higherThanThisNumber, innerOrOuter)
       # newGame()
     end
 
-    puts dieResults
-    puts rollResults
+    # puts dieResults
+    # puts rollResults
     puts gameResults
 
-    return {dieResults: dieResults, rollResults: rollResults, gameResults: gameResults}
+    return {gameResults: gameResults}
 
     
     # puts "Individual Dice Rolls"
